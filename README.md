@@ -18,7 +18,7 @@ FITCC je aplikacija, seminarski rad iz predmeta Razvoj softvera 2. Solution je d
 ## DESKTOP -v admin_fitcc
 
 ### **`ADMIN`**
-**USERNAME:** `meli`  
+**USERNAME:** `lamija`  
 **PASSWORD:** `Test123!`
    
         
