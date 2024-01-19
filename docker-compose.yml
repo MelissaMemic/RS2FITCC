@@ -1,0 +1,106 @@
+version: '3'
+services:
+#mssql docker
+  fitcc-sql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pass123!!
+      - MSSQL_PID=Developer
+    ports:
+      - 1435:1433
+    expose:
+        - 1433
+    networks:
+      - fitccnetwork
+
+  identity-server-fitcc:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./FITCCRS2.Server/Dockerfile
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=fitcc-sql,1433;Database=190039;User=sa;Password=Pass123!!;ConnectRetryCount=0
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+      - SMTP_SERVER=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USERNAME=tuttoservicech@gmail.com
+      - SMTP_PASSWORD=dednyv-koxfaq-3hopKa
+      - API_HOST=localhost
+      - API_PORT=5000
+    ports:
+      - 5000:5000
+    networks:
+      - fitccnetwork
+    links:
+      - fitcc-sql
+    depends_on:
+      - fitcc-sql
+
+  fitcc-api:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./FITCCRS2/Dockerfile
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=fitcc-sql,1433;Database=190039;User=sa;Password=Pass123!!;ConnectRetryCount=0
+      - ConnectionStrings:IdentityAuthority=http://identity-server-fitcc:5000
+      - Issuer=http://identity-server-fitcc:5000
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5038:5038
+    networks:
+      - fitccnetwork
+    links:
+      - fitcc-sql
+    depends_on:
+      - fitcc-sql
+      - identity-server-fitcc
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - fitccnetwork  
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      
+  rabbitmq-service:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./FITCCRS2.RabbitMQ/Dockerfile
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+      - SMTP_SERVER=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USERNAME=tuttoservicech@gmail.com
+      - SMTP_PASSWORD=dednyv-koxfaq-3hopKa
+      - API_HOST=localhost
+      - API_PORT=7125
+    depends_on:
+      - rabbitmq
+      - fitcc-api
+      - fitcc-sql
+    networks:
+      - fitccnetwork
+      
+volumes:
+  rabbitmq_data:
+
+networks:
+  fitccnetwork:
+    driver: bridge 

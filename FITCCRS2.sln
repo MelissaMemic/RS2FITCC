@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FITCCRS2", "FITCCRS2\FITCCRS2.csproj", "{A7892C19-8BBF-4BF3-A861-F320A652562E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FITCCRS2.Services", "FITCCRS2.Services\FITCCRS2.Services.csproj", "{45BE5C7D-1A26-4840-8BE7-1C5392941F59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FITCCRS2.Model", "FITCCRS2.Model\FITCCRS2.Model.csproj", "{C24628C3-E448-4574-89D7-F14C49684FE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FITCCRS2.Server", "FITCCRS2.Server\FITCCRS2.Server.csproj", "{A89FDF3B-2DE6-40FA-997A-152B9ED8A63E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57A10C87-49EA-47D3-A2FC-4E8E69AA094D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FITCCRS2.RabbitMQ", "FITCCRS2.RabbitMQ\FITCCRS2.RabbitMQ.csproj", "{75D9C414-A6FC-4FE4-AB6C-ED77D910C126}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7892C19-8BBF-4BF3-A861-F320A652562E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7892C19-8BBF-4BF3-A861-F320A652562E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7892C19-8BBF-4BF3-A861-F320A652562E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7892C19-8BBF-4BF3-A861-F320A652562E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45BE5C7D-1A26-4840-8BE7-1C5392941F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BE5C7D-1A26-4840-8BE7-1C5392941F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BE5C7D-1A26-4840-8BE7-1C5392941F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BE5C7D-1A26-4840-8BE7-1C5392941F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C24628C3-E448-4574-89D7-F14C49684FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24628C3-E448-4574-89D7-F14C49684FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24628C3-E448-4574-89D7-F14C49684FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24628C3-E448-4574-89D7-F14C49684FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89FDF3B-2DE6-40FA-997A-152B9ED8A63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89FDF3B-2DE6-40FA-997A-152B9ED8A63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89FDF3B-2DE6-40FA-997A-152B9ED8A63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89FDF3B-2DE6-40FA-997A-152B9ED8A63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D9C414-A6FC-4FE4-AB6C-ED77D910C126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D9C414-A6FC-4FE4-AB6C-ED77D910C126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D9C414-A6FC-4FE4-AB6C-ED77D910C126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D9C414-A6FC-4FE4-AB6C-ED77D910C126}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4C3559B-9E37-4F94-9FE6-93DB451AE208}
+	EndGlobalSection
+EndGlobal
